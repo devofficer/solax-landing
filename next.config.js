@@ -10,9 +10,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
-  },
+
   serverRuntimeConfig: {
     privateKey: process.env.FIREBASE_PRIVATE_KEY,
   },
