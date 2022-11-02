@@ -56,7 +56,6 @@
   }
 }
 
-// customize nprogress bar
 #nprogress .bar {
   background-color: white !important;
 }
@@ -70,7 +69,6 @@
   border-left-color: white !important;
 }
 
-// customize swiper
 .swiper-pagination {
   bottom: 0px !important;
 }

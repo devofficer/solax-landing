@@ -15,7 +15,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "react-toastify/dist/ReactToastify.css";
-import "assets/styles/globals.scss";
+import "assets/styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
