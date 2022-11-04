@@ -16,6 +16,8 @@ import TOKEN_PRICE from "assets/images/token_price@4x.png";
 import CURRENT_DISCOUNT from "assets/images/current_discount@4x.png";
 import MINIMUM_INVESTMENT from "assets/images/minimum_investment@4x.png";
 
+export const captchaKey = process.env.RECAPTCHA_SITE_KEY ? process.env.RECAPTCHA_SITE_KEY : "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 // pattern list
 export const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 export const telegramRegex = /((https?:\/\/)?(www[.])?(telegram|t)\.me\/|@)([a-zA-Z0-9_-]*)\/?$/;

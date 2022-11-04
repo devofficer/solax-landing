@@ -3,14 +3,15 @@ import React, { useRef, useState } from "react";
 import { Button, Image, Notification, Row } from "components";
 import { useMainAction } from "contexts";
 import { discordRegex, emailRegex, handleErrors, telegramRegex } from "utils";
-
+import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 import JOIN_SALE from "assets/images/join_sale@4x.png";
 
 const JoinSale = () => {
   const { isActionLoading, setIsActionLoading } = useMainAction();
   const contactInfoRef = useRef<HTMLInputElement>(null);
   const [hasError, setHasError] = useState(false);
-
+  const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
   const handleSubmit = async () => {
     setIsActionLoading(true);
     const contactInfo = contactInfoRef.current?.value;
@@ -64,6 +65,7 @@ const JoinSale = () => {
       setHasError(true);
       setIsActionLoading(false);
     }
+    setRefreshReCaptcha((r) => !r);
   };
 
   return (
@@ -100,6 +102,12 @@ const JoinSale = () => {
             Join
           </Button>
         </div>
+        <GoogleReCaptcha
+          onVerify={(token) => {
+            setRecaptchaToken(token);
+          }}
+          refreshReCaptcha={refreshReCaptcha}
+        />
       </div>
     </div>
   );
