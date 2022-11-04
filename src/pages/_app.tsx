@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 
 import Layout from "layouts";
 import { MainActionProvider, WalletConnectProvider } from "contexts";
-
 import "aos/dist/aos.css";
 import "nprogress/nprogress.css";
 import "swiper/css";
@@ -16,6 +15,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "react-toastify/dist/ReactToastify.css";
 import "assets/styles/globals.css";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { captchaKey } from "utils";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -44,14 +45,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const handleRouteFinish = () => NProgress.done();
 
   return (
-    <MainActionProvider>
-      <WalletConnectProvider>
-        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </WalletConnectProvider>
-    </MainActionProvider>
+    <GoogleReCaptchaProvider reCaptchaKey={captchaKey}>
+      <MainActionProvider>
+        <WalletConnectProvider>
+          <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </WalletConnectProvider>
+      </MainActionProvider>
+    </GoogleReCaptchaProvider>
   );
 };
 
