@@ -13,120 +13,75 @@
 }
 
 @layer components {
+  /* button component style */
   button {
-    background-size: 100%;
-    position: relative;
-    z-index: 100;
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: -100;
-      opacity: 0;
-      @apply bg-primary_gradient_hover shadow-button_hover;
-      border-radius: inherit;
-      transition: opacity 0.5s ease-in-out;
-    }
-    &:hover {
-      &:before {
-        opacity: 1;
-      }
-    }
+    @apply relative bg-100% z-[100] hover:before:opacity-100;
+  }
+  button::before {
+    @apply content-[""] block absolute w-full h-full top-0 left-0 z-[-100] opacity-0 rounded-[inherit] transition-opacity duration-500 ease-in-out bg-primary_gradient_hover shadow-button_hover;
   }
 
+  /* border animation for hover effect of menu */
+  .animate-border {
+    @apply hover:after:scale-100;
+  }
   .animate-border::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    left: 1px;
-    bottom: -6px;
-    background: white;
-    transition: all 0.3s ease-in;
-    transform-origin: left center;
-    transform: scale(0);
-  }
-
-  .animate-border:hover::after {
-    transform: scale(1);
+    @apply content-[""] absolute w-full h-[2px] left-px -bottom-[6px] bg-white transition-all origin-left duration-300 ease-in scale-0;
   }
 }
 
 #nprogress .bar {
-  background-color: white !important;
+  @apply bg-white;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px #29d, 0 0 5px #b064fe !important;
+  @apply shadow-nprogress_peg;
 }
-
 #nprogress .spinner-icon {
-  border-top-color: white !important;
-  border-left-color: white !important;
+  @apply border-t-white border-l-white;
 }
 
 .swiper-pagination {
-  bottom: 0px !important;
+  @apply bottom-0;
 }
 .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.56);
-  opacity: 0.9;
+  @apply bg-white_56 opacity-90;
 }
 .swiper-pagination-bullet-active {
-  background-color: #fff;
+  @apply bg-#fff;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-  top: 60%;
-  width: 25px;
-  height: 25px;
-  background: #fff;
-  outline: 0;
-  border-radius: 50%;
-  color: black;
-  font-weight: 700;
-  transition: background-color 0.2s ease, color 0.2s ease;
-
+  @apply top-3/5 w-[25px] h-[25px]  outline-0 rounded-full text-black bg-#fff font-bold transition ease-in delay-200;
   &::after {
-    font-weight: bold;
-    font-size: 12px;
+    @apply text-xs;
   }
 }
 
 .swiper-button-prev {
   &:after {
-    position: relative;
-    left: -1px;
+    @apply relative -left-[1px];
   }
 }
 
 .swiper-button-next {
   &:after {
-    position: relative;
-    left: 1px;
+    @apply relative left-1;
   }
 }
 
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  left: 10px;
-  right: auto;
+  @apply right-[10px] left-auto;
 }
 
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
-  right: 10px;
-  left: auto;
+  @apply right-[10px] left-auto;
 }
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
-  opacity: 0;
-  cursor: auto;
-  pointer-events: none;
+  @apply opacity-0 cursor-auto pointer-events-none;
 }
