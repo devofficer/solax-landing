@@ -1,18 +1,31 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 import { Button, Image, Notification, Row } from "components";
 import { useMainAction } from "contexts";
 import { discordRegex, emailRegex, handleErrors, telegramRegex } from "utils";
-import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 import JOIN_SALE from "assets/images/join_sale@4x.png";
-
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 const JoinSale = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const { isActionLoading, setIsActionLoading } = useMainAction();
   const contactInfoRef = useRef<HTMLInputElement>(null);
   const [hasError, setHasError] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
-  const handleSubmit = async () => {
+  const handleSumitForm = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+        console.log(gReCaptchaToken, "response Google reCaptcha server");
+        handleSubmit(gReCaptchaToken);
+      });
+    },
+    [executeRecaptcha]
+  );
+  const handleSubmit = async (gReCaptchaToken: string) => {
     setIsActionLoading(true);
     const contactInfo = contactInfoRef.current?.value;
     let contactType = "";
@@ -36,12 +49,18 @@ const JoinSale = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ contactType: contactType, contactInfo: contactInfo }),
+            body: JSON.stringify({ contactType: contactType, contactInfo: contactInfo, gRecaptchaToken: gReCaptchaToken }),
           };
+          console.log(options);
 
           const res = await fetch(url, options);
           const result = await res.json();
-
+          console.log(result, "response from backend");
+          // if (res?.status === "success") {
+          //   setNotification(res?.message);
+          // } else {
+          //   setNotification(res?.message);
+          // }
           if (result.success === 1) {
             Notification({ type: "success", title: "Success", message: "Submitted us your contact info!" });
           } else if (result.success === 2) {
@@ -65,7 +84,6 @@ const JoinSale = () => {
       setHasError(true);
       setIsActionLoading(false);
     }
-    setRefreshReCaptcha((r) => !r);
   };
 
   return (
@@ -98,16 +116,10 @@ const JoinSale = () => {
               hasError ? "border-error placeholder:text-error" : "border-white placeholder:text-white"
             } rounded-full`}
           />
-          <Button action={handleSubmit} isLoading={isActionLoading} disabled={isActionLoading} className="absolute inset-y-0 right-0">
+          <Button action={handleSumitForm} isLoading={isActionLoading} disabled={isActionLoading} className="absolute inset-y-0 right-0">
             Join
           </Button>
         </div>
-        <GoogleReCaptcha
-          onVerify={(token) => {
-            setRecaptchaToken(token);
-          }}
-          refreshReCaptcha={refreshReCaptcha}
-        />
       </div>
     </div>
   );

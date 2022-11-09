@@ -27,6 +27,8 @@ module.exports = {
         label: "#BEAFFA",
         tokenomics: "#7AFFF7",
         error: "#FD8999",
+        white_56: "rgba(255, 255, 255, 0.56)",
+        "#fff": "#fff",
       },
       backgroundImage: (theme) => ({
         // primary_gradient: `linear-gradient(to right, ${theme("colors.gradient1")}, ${theme("colors.gradient2")})`,
@@ -43,6 +45,13 @@ module.exports = {
         primary_gradient_active:
           "linear-gradient(0deg, rgba(255, 255, 255, 0.27), rgba(255, 255, 255, 0.27)), linear-gradient(101.3deg, #FD8999 7.28%, #B89DF1 34.88%, #05BCEE 67.09%, #02BBA4 91.43%)",
       }),
+
+      backgroundSize: {
+        "100%": "100%",
+      },
+      spacing: {
+        "3/5": "60%",
+      },
       boxShadow: {
         button_hover: "0px 7px 10px #B89DF170",
         card_box1: "16px 12px 10px #00D2C850",
@@ -50,6 +59,7 @@ module.exports = {
         card_box3: "16px 12px 10px #7C62E450",
         card_box4: "16px 12px 10px #00D2C850",
         card_box5: "16px 12px 10px #43DDD650",
+        nprogress_peg: "0 0 10px #29d, 0 0 5px #b064fe",
       },
       fontFamily: {
         sans: ["Encode Sans", ...defaultTheme.fontFamily.sans], // default font style

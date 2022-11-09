@@ -16,7 +16,8 @@ import TOKEN_PRICE from "assets/images/token_price@4x.png";
 import CURRENT_DISCOUNT from "assets/images/current_discount@4x.png";
 import MINIMUM_INVESTMENT from "assets/images/minimum_investment@4x.png";
 
-export const captchaKey = process.env.RECAPTCHA_SITE_KEY ? process.env.RECAPTCHA_SITE_KEY : "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+export const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+export const recaptchaPrivKey = process.env.NEXT_PUBLIC_RECAPTCHA_PRIV_KEY || "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
 
 // pattern list
 export const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
