@@ -13,6 +13,7 @@ const nextConfig = {
 
   serverRuntimeConfig: {
     privateKey: process.env.FIREBASE_PRIVATE_KEY,
+    recaptchaPrivKey: process.env.RECAPTCHA_PRIV_KEY,
   },
   swcMinify: true,
 };

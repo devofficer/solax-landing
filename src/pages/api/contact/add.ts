@@ -1,10 +1,16 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-
+// @ts-ignore
+import validateRecaptcha from "recaptcha-validator";
+import requestIp from "request-ip";
 import { db } from "firebase/admin";
-import { recaptchaPrivKey } from "utils";
-const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { contactType, contactInfo } = req.body;
+import getConfig from "next/config";
 
+const { serverRuntimeConfig } = getConfig();
+const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { contactType, contactInfo, gRecaptchaToken } = req.body;
+  const clientIp = requestIp.getClientIp(req);
+
+  const recaptchaPrivKey = serverRuntimeConfig.recaptchaPrivKey || "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
   const handleQuery = async () => {
     try {
       const snapshot = await db.collection(contactType).where("contactInfo", "==", contactInfo).get();
@@ -20,39 +26,25 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
       res.status(400).json({ success: 0, error: error });
     }
   };
-
-  if (req.method === "POST") {
-    try {
-      fetch("https://www.google.com/recaptcha/api/siteverify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `secret=${recaptchaPrivKey}&response=${req.body.gRecaptchaToken}`,
-      })
-        .then((reCaptchaRes) => reCaptchaRes.json())
-        .then((reCaptchaRes) => {
-          console.log(reCaptchaRes, "Response from Google reCaptcha verification API");
-          if (reCaptchaRes?.score > 0.5) {
-            // Save data to the database from here
-            console.log(reCaptchaRes);
-            // handleQuery();
-          } else {
-            res.status(200).json({
-              sucess: 0,
-            });
-          }
-        });
-    } catch (error) {
-      res.status(405).json({
-        sucess: 0,
-        error: error,
-      });
-    }
-  } else {
-    res.status(405);
-    res.end();
-  }
+  validateRecaptcha(recaptchaPrivKey, gRecaptchaToken, clientIp)
+    .then(function (reply: any) {
+      const { success } = reply;
+      if (success) {
+        handleQuery();
+      } else {
+        res.status(403).json({ success: 3, error: "Invalid Captcha. Try again." });
+      }
+    })
+    .catch(function (err: any) {
+      if (typeof err === "string") {
+        const errorMsg = "Got recaptcha error: " + err + " please go back and try again";
+        res.status(403).json({ success: 3, error: errorMsg });
+      } else {
+        console.error("[INTERNAL_ERROR] Recaptcha failure: ", err);
+        const errorMsg = "[INTERNAL_ERROR] Recaptcha failure: ";
+        res.status(403).json({ success: 0, error: errorMsg });
+      }
+    });
 };
 
 export default handler;

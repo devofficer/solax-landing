@@ -3,29 +3,25 @@ import React, { useCallback, useRef, useState } from "react";
 import { Button, Image, Notification, Row } from "components";
 import { useMainAction } from "contexts";
 import { discordRegex, emailRegex, handleErrors, telegramRegex } from "utils";
+import ReCAPTCHA from "react-google-recaptcha";
 import JOIN_SALE from "assets/images/join_sale@4x.png";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-const JoinSale = () => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
 
+const JoinSale = () => {
+  const recaptchaSiteKey: string = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   const { isActionLoading, setIsActionLoading } = useMainAction();
   const contactInfoRef = useRef<HTMLInputElement>(null);
   const [hasError, setHasError] = useState(false);
-  const handleSumitForm = useCallback(
-    (e: any) => {
-      e.preventDefault();
-      if (!executeRecaptcha) {
-        console.log("Execute recaptcha not yet available");
-        return;
-      }
-      executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-        console.log(gReCaptchaToken, "response Google reCaptcha server");
-        handleSubmit(gReCaptchaToken);
-      });
-    },
-    [executeRecaptcha]
-  );
-  const handleSubmit = async (gReCaptchaToken: string) => {
+
+  const [token, setToken] = useState("");
+  const reCaptcha = useRef<ReCAPTCHA>(null);
+
+  const handleSubmit = async () => {
+    if (!token) {
+      Notification({ type: "warn", title: "Warning", message: "Please verify the captcha first" });
+
+      return;
+    }
+
     setIsActionLoading(true);
     const contactInfo = contactInfoRef.current?.value;
     let contactType = "";
@@ -49,22 +45,18 @@ const JoinSale = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ contactType: contactType, contactInfo: contactInfo, gRecaptchaToken: gReCaptchaToken }),
+            body: JSON.stringify({ contactType: contactType, contactInfo: contactInfo, gRecaptchaToken: token }),
           };
-          console.log(options);
 
           const res = await fetch(url, options);
           const result = await res.json();
-          console.log(result, "response from backend");
-          // if (res?.status === "success") {
-          //   setNotification(res?.message);
-          // } else {
-          //   setNotification(res?.message);
-          // }
+
           if (result.success === 1) {
             Notification({ type: "success", title: "Success", message: "Submitted us your contact info!" });
           } else if (result.success === 2) {
             Notification({ type: "warn", title: "Warning", message: "You have already submitted!" });
+          } else if (result.success === 3) {
+            Notification({ type: "warn", title: "Warning", message: result.error });
           } else {
             Notification({ type: "error", title: "Failure", message: "Unknown Error!" });
           }
@@ -74,6 +66,9 @@ const JoinSale = () => {
           setHasError(true);
           setIsActionLoading(false);
           handleErrors(error);
+        } finally {
+          reCaptcha.current?.reset();
+          setToken("");
         }
       } else {
         setHasError(true);
@@ -116,9 +111,17 @@ const JoinSale = () => {
               hasError ? "border-error placeholder:text-error" : "border-white placeholder:text-white"
             } rounded-full`}
           />
-          <Button action={handleSumitForm} isLoading={isActionLoading} disabled={isActionLoading} className="absolute inset-y-0 right-0">
+          <Button action={handleSubmit} isLoading={isActionLoading} disabled={isActionLoading} className="absolute inset-y-0 right-0">
             Join
           </Button>
+          <div className="p-[20px]">
+            <ReCAPTCHA
+              sitekey={recaptchaSiteKey}
+              ref={reCaptcha}
+              onChange={(token: string | null) => setToken(token as string)}
+              onExpired={() => setToken("")}
+            />
+          </div>
         </div>
       </div>
     </div>
