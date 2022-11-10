@@ -23,7 +23,7 @@ const ImageComponent: FC<ImageProps> = ({
   }
 
   const blurUrl = (typeof src === "object" ? src.src : src) + "?q=10";
-  const blurProperty: ImagePlaceholderProps = width < 40 || height < 40 ? {} : { placeholder: "blur", blurDataURL: blurUrl };
+  const blurProperty: ImagePlaceholderProps = width < 40 || height < 40 ? {} : { placeholder: "blur" };
 
   return mode === "fill" ? (
     <div className="absolute top-0 bottom-0 h-full w-full" {...props}>
@@ -39,7 +39,6 @@ const ImageComponent: FC<ImageProps> = ({
           loading={loadOption}
           priority={priority}
           objectPosition={oPosition}
-          {...blurProperty}
         />
       </div>
     </div>
@@ -57,7 +56,6 @@ const ImageComponent: FC<ImageProps> = ({
       loading={loadOption}
       priority={priority}
       objectPosition={oPosition}
-      {...blurProperty}
       {...props}
     />
   );
