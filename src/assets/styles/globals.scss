@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply scroll-smooth overflow-x-hidden;
+  }
+
+  * {
+    @apply transition-all;
+  }
+}
+
+@layer components {
+  button {
+    background-size: 100%;
+    position: relative;
+    z-index: 100;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: -100;
+      opacity: 0;
+      @apply bg-primary_gradient_hover shadow-button_hover;
+      border-radius: inherit;
+      transition: opacity 0.5s ease-in-out;
+    }
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .animate-border::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 1px;
+    bottom: -6px;
+    background: white;
+    transition: all 0.3s ease-in;
+    transform-origin: left center;
+    transform: scale(0);
+  }
+
+  .animate-border:hover::after {
+    transform: scale(1);
+  }
+}
+
+// customize nprogress bar
+#nprogress .bar {
+  background-color: white !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #29d, 0 0 5px #b064fe !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: white !important;
+  border-left-color: white !important;
+}
+
+// customize swiper
+.swiper-pagination {
+  bottom: 0px !important;
+}
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.56);
+  opacity: 0.9;
+}
+.swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 60%;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  outline: 0;
+  border-radius: 50%;
+  color: black;
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &::after {
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
+.swiper-button-prev {
+  &:after {
+    position: relative;
+    left: -1px;
+  }
+}
+
+.swiper-button-next {
+  &:after {
+    position: relative;
+    left: 1px;
+  }
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  left: 10px;
+  right: auto;
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  right: 10px;
+  left: auto;
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0;
+  cursor: auto;
+  pointer-events: none;
+}
