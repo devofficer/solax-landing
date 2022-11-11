@@ -39,6 +39,7 @@ const ImageComponent: FC<ImageProps> = ({
           loading={loadOption}
           priority={priority}
           objectPosition={oPosition}
+          {...blurProperty}
         />
       </div>
     </div>
@@ -56,6 +57,7 @@ const ImageComponent: FC<ImageProps> = ({
       loading={loadOption}
       priority={priority}
       objectPosition={oPosition}
+      {...blurProperty}
       {...props}
     />
   );

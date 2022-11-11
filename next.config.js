@@ -2,14 +2,7 @@
 
 const path = require("path");
 
-const nextConfig = {};
-
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-module.exports = withBundleAnalyzer({
-  // put the rest of config here
+const nextConfig = {
   experimental: {
     newNextLinkBehavior: true,
   },
@@ -23,4 +16,6 @@ module.exports = withBundleAnalyzer({
     recaptchaPrivKey: process.env.RECAPTCHA_PRIV_KEY,
   },
   swcMinify: true,
-});
+};
+
+module.exports = nextConfig;
