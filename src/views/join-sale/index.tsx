@@ -120,6 +120,7 @@ const JoinSale = () => {
               ref={reCaptcha}
               onChange={(token: string | null) => setToken(token as string)}
               onExpired={() => setToken("")}
+              theme={"dark"}
             />
           </div>
         </div>

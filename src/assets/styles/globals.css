@@ -53,35 +53,42 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  @apply top-3/5 w-[25px] h-[25px]  outline-0 rounded-full text-black bg-#fff font-bold transition ease-in delay-200;
-  &::after {
-    @apply text-xs;
-  }
+  top: 60%;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  outline: 0;
+  border-radius: 50%;
+  color: black;
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
-
-.swiper-button-prev {
-  &:after {
-    @apply relative -left-[1px];
-  }
+.swiper-button-prev::after {
+  font-weight: bold;
+  font-size: 12px;
+  @apply relative -left-[1px];
 }
-
-.swiper-button-next {
-  &:after {
-    @apply relative left-1;
-  }
+.swiper-button-next::after {
+  font-weight: bold;
+  font-size: 12px;
+  @apply relative left-1;
 }
 
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  @apply right-[10px] left-auto;
+  left: 10px;
+  right: auto;
 }
 
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
-  @apply right-[10px] left-auto;
+  right: 10px;
+  left: auto;
 }
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
-  @apply opacity-0 cursor-auto pointer-events-none;
+  opacity: 0;
+  cursor: auto;
+  pointer-events: none;
 }
