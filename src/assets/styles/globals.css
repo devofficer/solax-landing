@@ -20,7 +20,9 @@
   button::before {
     @apply content-[""] block absolute w-full h-full top-0 left-0 z-[-100] opacity-0 rounded-[inherit] transition-opacity duration-500 ease-in-out bg-primary_gradient_hover shadow-button_hover;
   }
-
+  button:disabled {
+    opacity: 0.6;
+  }
   /* border animation for hover effect of menu */
   .animate-border {
     @apply hover:after:scale-100;

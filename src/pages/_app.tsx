@@ -7,7 +7,7 @@ import NProgress from "nprogress";
 import { ToastContainer } from "react-toastify";
 
 import Layout from "layouts";
-import { MainActionProvider, WalletConnectProvider } from "contexts";
+import { MainActionProvider } from "contexts";
 import "aos/dist/aos.css";
 import "nprogress/nprogress.css";
 import "swiper/css";
@@ -16,9 +16,9 @@ import "swiper/css/pagination";
 import "react-toastify/dist/ReactToastify.css";
 import "assets/styles/globals.css";
 
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
+
   NProgress.configure({ showSpinner: true });
 
   useEffect(() => {
@@ -44,12 +44,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <MainActionProvider>
-      <WalletConnectProvider>
-        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </WalletConnectProvider>
+      <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </MainActionProvider>
   );
 };

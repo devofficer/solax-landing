@@ -10,7 +10,6 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   reactStrictMode: true,
-
   serverRuntimeConfig: {
     privateKey: process.env.FIREBASE_PRIVATE_KEY,
     recaptchaPrivKey: process.env.RECAPTCHA_PRIV_KEY,

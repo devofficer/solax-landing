@@ -94,7 +94,7 @@ const Tokenomics = () => {
                 </p>
                 <Col className="space-y-[20px] font-semibold text-[16px] last:text-[14px]">
                   <Row className="justify-between">
-                    <p className="uppercase font-medium text-[#ffffff30]">% Of Supply</p>
+                    <p className="uppercase font-medium text-[#ffffff30]">% Of Total Supply</p>
                     <p>{tokenomics_list[delayedSegment].info.part}%</p>
                   </Row>
                   <Row className="justify-between">

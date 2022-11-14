@@ -16,12 +16,6 @@ const JoinSale = () => {
   const reCaptcha = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async () => {
-    if (!token) {
-      Notification({ type: "warn", title: "Warning", message: "Please verify the captcha first" });
-
-      return;
-    }
-
     setIsActionLoading(true);
     const contactInfo = contactInfoRef.current?.value;
     let contactType = "";
@@ -52,9 +46,9 @@ const JoinSale = () => {
           const result = await res.json();
 
           if (result.success === 1) {
-            Notification({ type: "success", title: "Success", message: "Submitted us your contact info!" });
+            Notification({ type: "success", title: "Success", message: "Thanks for joining our private sale! We will reach out to your given contact soon." });
           } else if (result.success === 2) {
-            Notification({ type: "warn", title: "Warning", message: "You have already submitted!" });
+            Notification({ type: "warn", title: "Warning", message: "You have already registered!" });
           } else if (result.success === 3) {
             Notification({ type: "warn", title: "Warning", message: result.error });
           } else {
@@ -73,7 +67,7 @@ const JoinSale = () => {
       } else {
         setHasError(true);
         setIsActionLoading(false);
-        Notification({ type: "error", title: "Failure", message: "Invalid contact info! Please try with other" });
+        Notification({ type: "error", title: "Failure", message: "Invalid contact info! Please try with other." });
       }
     } else {
       setHasError(true);
@@ -111,7 +105,7 @@ const JoinSale = () => {
               hasError ? "border-error placeholder:text-error" : "border-white placeholder:text-white"
             } rounded-full`}
           />
-          <Button action={handleSubmit} isLoading={isActionLoading} disabled={isActionLoading} className="absolute inset-y-0 right-0">
+          <Button action={handleSubmit} isLoading={isActionLoading} disabled={isActionLoading || !token} className="absolute inset-y-0 right-0">
             Join
           </Button>
           <div className="p-[20px]">
