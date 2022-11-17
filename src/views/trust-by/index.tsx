@@ -11,7 +11,7 @@ const TrustBy = () => {
           <div className="uppercase font-bold text-[32px] pr-6 normal:pt-4  mobile:text-[24px] last:text-[20px] text-black leading-[40px] whitespace-nowrap last:py-2 ">
             Trusted By
           </div>
-          <Border className="w-[3px] h-[116px] bg-black normal:invisible normal:h-0" />
+          <Border className="w-[3px] mr-4 h-[116px] bg-black normal:invisible normal:h-0" />
           <Row className="items-center space-x-[60px] normal:py-4 normal:space-x-[40px] mobile:space-x-[12px] last:pb-3 last:pt-0 ">
             {partner_site_list.map((partner, index) =>
               partner.label !== "vt3" ? (
