@@ -19,7 +19,7 @@ const TokenDetails = () => {
             </div>
             <p className="uppercase font-bold text-[48px] leading-[60px] normal:text-[32px] normal:leading-[40px]">SAX Token</p>
           </Row>
-          <Button action={() => router.push("/details")}>Details</Button>
+          <Button action={() => router.push("/sax")}>Details</Button>
         </div>
         <div
           data-aos="fade-up"

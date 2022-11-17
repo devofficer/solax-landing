@@ -48,7 +48,7 @@ export const seo_list: { [any: string]: SeoProps } = {
 // menu list
 export const menu_list = [
   { name: "Home", path: "/" },
-  { name: "$Sax Token", path: "/details" },
+  { name: "$Sax Token", path: "/sax" },
   { name: "Docs", path: "https://docs.solax.so/" },
 ];
 
