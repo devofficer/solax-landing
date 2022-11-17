@@ -46,7 +46,11 @@ const JoinSale = () => {
           const result = await res.json();
 
           if (result.success === 1) {
-            Notification({ type: "success", title: "Success", message: "Thanks for joining our private sale! We will reach out to your given contact soon." });
+            Notification({
+              type: "success",
+              title: "Success",
+              message: "Thanks for joining our private sale! We will reach out to your given contact soon.",
+            });
           } else if (result.success === 2) {
             Notification({ type: "warn", title: "Warning", message: "You have already registered!" });
           } else if (result.success === 3) {
@@ -100,12 +104,18 @@ const JoinSale = () => {
           <input
             type="text"
             ref={contactInfoRef}
+            disabled={isActionLoading || !token}
             placeholder={hasError ? "Please enter your contacts" : "Email/Discord/Telegram"}
             className={`px-[29px] pr-[94px] py-[16px] w-full bg-transparent border ${
               hasError ? "border-error placeholder:text-error" : "border-white placeholder:text-white"
             } rounded-full`}
           />
-          <Button action={handleSubmit} isLoading={isActionLoading} disabled={isActionLoading || !token} className="absolute inset-y-0 right-0">
+          <Button
+            action={handleSubmit}
+            isLoading={isActionLoading}
+            disabled={isActionLoading || !token}
+            className="absolute inset-y-0 right-0"
+          >
             Join
           </Button>
           <div className="p-[20px]">

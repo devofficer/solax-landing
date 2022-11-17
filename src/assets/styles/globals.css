@@ -22,6 +22,11 @@
   }
   button:disabled {
     opacity: 0.6;
+    cursor: not-allowed;
+  }
+  input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
   /* border animation for hover effect of menu */
   .animate-border {

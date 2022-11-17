@@ -168,6 +168,26 @@ export const social_list = [
   { label: "Discord", icon: Discord, path: "https://discord.gg/SfkybtttdC" },
 ];
 
+export const partner_site_list = [
+  { label: "lithium.ventures", path: "https://lithium.ventures", icon: "/images/logos/Lithium.png", width: 465, height: 90 },
+  { label: "consola.finance", path: "https://consola.finance", icon: "/images/logos/Consola.png", width: 66.6, height: 60 },
+  { label: "vt3", path: "", icon: "/images/logos/vt3.png", width: 125, height: 80 },
+  {
+    label: "Handelsblatt",
+    path: "https://award.handelsblatt.com/university-challenge/award-2022/?lang=en",
+    icon: "/images/logos/Handelsblatt.png",
+    width: 414,
+    height: 60,
+  },
+  {
+    label: "award",
+    path: "https://www.frankfurt-school.de/home/research/centres/blockchain",
+    icon: "/images/logos/FSFM.png",
+    width: 66.6,
+    height: 76,
+  },
+];
+
 // private sale list
 export const private_sale_list = [
   {
