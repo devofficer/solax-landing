@@ -168,23 +168,44 @@ export const social_list = [
   { label: "Discord", icon: Discord, path: "https://discord.gg/SfkybtttdC" },
 ];
 
-export const partner_site_list = [
-  { label: "lithium.ventures", path: "https://lithium.ventures", icon: "/images/logos/Lithium.png", width: 465, height: 90 },
-  { label: "consola.finance", path: "https://consola.finance", icon: "/images/logos/Consola.png", width: 66.6, height: 60 },
-  { label: "vt3", path: "https://twitter.com/vt3ventures", icon: "/images/logos/vt3.png", width: 125, height: 80 },
+export const partner_site_list1 = [
+  { label: "lithium.ventures", path: "https://lithium.ventures", icon: "/images/logos/Lithium.png", width: 155, height: 30 },
+  { label: "consola.finance", path: "https://consola.finance", icon: "/images/logos/Consola.png", width: 135, height: 30 },
+  { label: "vt3", path: "https://twitter.com/vt3ventures", icon: "/images/logos/vt3.png", width: 170, height: 30 },
+];
+export const partner_site_list2 = [
   {
     label: "Handelsblatt",
     path: "https://award.handelsblatt.com/university-challenge/award-2022/?lang=en",
     icon: "/images/logos/Handelsblatt.png",
-    width: 414,
-    height: 60,
+    width: 207,
+    height: 30,
   },
   {
     label: "award",
     path: "https://www.frankfurt-school.de/home/research/centres/blockchain",
     icon: "/images/logos/FSFM.png",
-    width: 66.6,
-    height: 76,
+    width: 141,
+    height: 30,
+  },
+];
+export const partner_site_list = [
+  { label: "lithium.ventures", path: "https://lithium.ventures", icon: "/images/logos/Lithium.png", width: 175, height: 34 },
+  { label: "consola.finance", path: "https://consola.finance", icon: "/images/logos/Consola.png", width: 146, height: 33 },
+  { label: "vt3", path: "https://twitter.com/vt3ventures", icon: "/images/logos/vt3.png", width: 170, height: 30 },
+  {
+    label: "Handelsblatt",
+    path: "https://award.handelsblatt.com/university-challenge/award-2022/?lang=en",
+    icon: "/images/logos/Handelsblatt.png",
+    width: 172,
+    height: 25,
+  },
+  {
+    label: "award",
+    path: "https://www.frankfurt-school.de/home/research/centres/blockchain",
+    icon: "/images/logos/FSFM.png",
+    width: 161,
+    height: 34,
   },
 ];
 

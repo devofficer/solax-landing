@@ -12,20 +12,14 @@ const TrustBy = () => {
             Trusted By
           </div>
           <Border className="w-[3px] mr-4 h-[116px] bg-black normal:invisible normal:h-0" /> */}
-        <Row className="items-center space-x-[60px] normal:py-4 normal:space-x-[40px] mobile:space-x-[12px] last:pb-3 last:pt-0 mobile:h-[86px] h-[116px]">
-          {partner_site_list.map((partner, index) =>
-            partner.label !== "vt3" ? (
-              <a key={`partner_${index}`} aria-label={partner.label} href={partner.path} target="_blank" rel="noopener noreferrer">
-                <Row className="items-center">
-                  <Image src={partner.icon} alt="F Logo" width={partner.width} height={partner.height} />
-                </Row>
-              </a>
-            ) : (
-              <Row className="items-center">
+        <Row className="flex flex-wrap items-center justify-between desktop:justify-center tv:py-6 py-4 space-x-4">
+          {partner_site_list.map((partner, index) => (
+            <a key={`partner_${index}`} aria-label={partner.label} href={partner.path} target="_blank" rel="noopener noreferrer">
+              <Row className="items-center mt-2 mb-2">
                 <Image src={partner.icon} alt="F Logo" width={partner.width} height={partner.height} />
               </Row>
-            )
-          )}
+            </a>
+          ))}
         </Row>
         {/* </Row> */}
       </Container>
