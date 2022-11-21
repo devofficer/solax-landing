@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const path = require("path");
-
 const nextConfig = {
   experimental: {
     newNextLinkBehavior: true,
@@ -16,5 +14,11 @@ const nextConfig = {
   },
   swcMinify: true,
 };
+
+if (process.env.STATIC === 'true') {
+  nextConfig.images.loader = 'custom';
+  nextConfig.images.loaderFile = './custom_loader';
+  nextConfig.images.unoptimized = true;
+}
 
 module.exports = nextConfig;

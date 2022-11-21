@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "static": "STATIC=true next export -o dist",
     "lint": "next lint",
     "clear": "del-cli --force ./.next ./node_modules",
     "clear:next": "del-cli --force ./.next",
     "clear:modules": "del-cli --force ./node_modules",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "aos": "^2.3.4",
