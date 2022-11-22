@@ -12,7 +12,7 @@ const TrustBy = () => {
             Trusted By
           </div>
           <Border className="w-[3px] mr-4 h-[116px] bg-black normal:invisible normal:h-0" /> */}
-        <Row className="flex flex-wrap items-center justify-between desktop:justify-center tv:py-6 py-4 space-x-4">
+        <Row className="flex flex-wrap items-center justify-between normal:justify-center tv:py-6 py-4 space-x-4">
           {partner_site_list.map((partner, index) => (
             <a key={`partner_${index}`} aria-label={partner.label} href={partner.path} target="_blank" rel="noopener noreferrer">
               <Row className="items-center mt-2 mb-2">
