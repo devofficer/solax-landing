@@ -56,7 +56,7 @@ export const menu_list = [
 export const feature_list = [
   {
     title: "Deep Liquidity Swaps",
-    details: "Enjoy instant trades between pairs with minimal slippage, low transaction costs or trading fees.",
+    details: "Enjoy instant swaps between pairs with minimal slippage, low transaction costs or swap fees.",
     image: DEEP_LIQUIDITY_SWAP,
     alt: "Deep Liquidity SWAP",
     width: 235,
@@ -67,8 +67,7 @@ export const feature_list = [
   },
   {
     title: "CROSS-CHAIN",
-    details:
-      "Our integrated bridge enables cross-chain functions and integrates the most popular blockchain ecosystems like Ethereum, Binance Smart Chain, Polygon and many more.",
+    details: "Our integrated bridge enables cross-chain functions and integrates the most popular EVM ecosystems.",
     image: CROSS_CHAIN,
     alt: "CROSS-CHAIN",
     width: 257,
@@ -80,7 +79,7 @@ export const feature_list = [
   {
     title: "Smart liquidity protocol",
     details:
-      "Our liquidity pools enable smart liquidity routing with dynamic pool balances and singe side liquidity mining options as well as variable trading fees. Thanks to smart liquidity routing, we can eliminate the risk of impermanent loss and capital will always be staked at highest efficiency and APYs.",
+      "Our smart liquidity routing feature manages the liquidity in a way that single pool risks are minimized and the realized APY is the highest possible. A user only has to deposit one single asset in order to provide liquidity to multiple pools.",
     image: LIQUIDITY_POOL,
     alt: "SMART LIQUIDITY POOL",
     width: 215,
@@ -110,7 +109,7 @@ export const use_case_list = [
     label: "LIQUIDITY PROVIDERS",
     title: "High APY",
     details:
-      "Inner platform liquidity aggregation and our smart liquidity routing feature ensure the most efficient use of the provided liquidity and eliminate the risks of impermanent loss due to single-sided liquidity provision.",
+      "Inner platform yield optimization and our smart liquidity routing feature ensure the most efficient use of the provided liquidity and eliminate the risks of impermanent loss due to single and multi asset liquidity pools.",
     image: HIGH_APY,
     alt: "HIGH APY",
     width: 185,
@@ -137,7 +136,7 @@ export const use_case_list = [
     label: "$SAX HOLDERS",
     title: "High Staking Rewards",
     details:
-      "$SAX token holders can stake their tokens a earn trading rewards or trade with discounts. $SAX staking will also be part of smart liquidity routing.",
+      "$SAX token holders can stake their tokens and earn staking rewards or trade with discounts. In the future, governance will be added as a utility to $SAX.",
     image: STAKING_REWARDS,
     alt: "STAKING REWARDS",
     width: 203,
