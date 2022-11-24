@@ -9,7 +9,7 @@ const UseCase = () => {
       <div className="mt-[154px] tablet:mt-[100px] pb-[102px] tablet:pb-[82px] uppercase text-center font-bold text-[48px] leading-[60px] normal:text-[30px] normal:leading-[40px]">
         Use-Cases
       </div>
-      <div className="grid grid-cols-2 tablet:grid-cols-1 gap-x-[36px] laptop:gap-x-[20px] gap-y-[99px] laptop:gap-y-[90px]">
+      <div className="grid grid-cols-2 tablet:grid-cols-1 gap-x-[23px] laptop:gap-x-[18px] gap-y-[99px] laptop:gap-y-[90px]">
         {use_case_list.map((use_case, index) => (
           <div
             key={`use_case_${index}`}
