@@ -26,7 +26,7 @@ const ProtocolFeature = () => {
       <p className="mt-[176px] tablet:mt-[100px] pb-[43px] tablet:pb-[40px] uppercase text-center font-bold text-[48px] leading-[50px] normal:text-[30px] normal:leading-[40px]">
         Protocol Features
       </p>
-      <div className="grid grid-cols-3 normal:grid-cols-1 gap-[23px] laptop:gap-[18px]">
+      <div className="grid grid-cols-2 normal:grid-cols-1 gap-[23px] laptop:gap-[18px]">
         {feature_list.map((feature, index) => (
           <Col
             animate="fade-up"

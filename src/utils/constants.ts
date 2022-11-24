@@ -65,17 +65,17 @@ export const feature_list = [
     delay: 300,
     animationDelay: "animation-delay-500",
   },
-  {
-    title: "CROSS-CHAIN",
-    details: "Our integrated bridge enables cross-chain functions and integrates the most popular EVM ecosystems.",
-    image: CROSS_CHAIN,
-    alt: "CROSS-CHAIN",
-    width: 257,
-    height: 286,
-    type: 1,
-    delay: 600,
-    animationDelay: "animation-delay-1000",
-  },
+  // {
+  //   title: "CROSS-CHAIN",
+  //   details: "Our integrated bridge enables cross-chain functions and integrates the most popular EVM ecosystems.",
+  //   image: CROSS_CHAIN,
+  //   alt: "CROSS-CHAIN",
+  //   width: 257,
+  //   height: 286,
+  //   type: 1,
+  //   delay: 600,
+  //   animationDelay: "animation-delay-1000",
+  // },
   {
     title: "Smart liquidity protocol",
     details:
@@ -246,11 +246,11 @@ export const general_info_list = [
 
 // token utility list
 export const token_utility_list = [
-  { title: "Tier 1", value: "16.000", percentage: "4%", bg: "bg-[#43DDD6]" },
-  { title: "Tier 2", value: "16.000", percentage: "8%", bg: "bg-[#008680]" },
-  { title: "Tier 3", value: "16.000", percentage: "16%", bg: "bg-[#00A29A]" },
-  { title: "Tier 4", value: "16.000", percentage: "32%", bg: "bg-[#00B1A9]" },
-  { title: "Tier 5", value: "16.000", percentage: "64%", bg: "bg-[#00BCB4]" },
+  { title: "Tier 1", value: "4,000", percentage: "4%", bg: "bg-[#43DDD6]" },
+  { title: "Tier 2", value: "8,000", percentage: "8%", bg: "bg-[#008680]" },
+  { title: "Tier 3", value: "16,000", percentage: "16%", bg: "bg-[#00A29A]" },
+  { title: "Tier 4", value: "32,000", percentage: "32%", bg: "bg-[#00B1A9]" },
+  { title: "Tier 5", value: "64,000", percentage: "64%", bg: "bg-[#00BCB4]" },
 ];
 
 export const tokenomics_list: { [any: string]: any } = {
