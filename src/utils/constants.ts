@@ -239,7 +239,7 @@ export const general_info_list = [
   { title: "Fully Diluted Market Cap", value: "$25,000,000" },
   {
     title: "$SAX Token",
-    value: "Contract Address: SAX2..uiqa ",
+    value: "SAX2...uiqa ",
     path: "https://solscan.io/token/SAX2cChnuhnKfUDERWVHyd8CoeDNR4NjoxwjuW8uiqa",
   },
 ];
