@@ -15,7 +15,7 @@ const TrustBy = () => {
         <Row className="flex flex-wrap items-center justify-between laptop:justify-center tablet:justify-center tv:py-6 py-4 space-x-4">
           {partner_site_list.map((partner, index) => (
             <a key={`partner_${index}`} aria-label={partner.label} href={partner.path} target="_blank" rel="noopener noreferrer">
-              <Row className="items-center mt-2 mb-2 laptop:mx-12  tablet:mx-10 normal:mx-0">
+              <Row className="items-center mt-2 mb-2 laptop:mx-8  tablet:mx-6 normal:mx-2">
                 <Image src={partner.icon} alt="F Logo" width={partner.width} height={partner.height} />
               </Row>
             </a>
