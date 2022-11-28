@@ -52,7 +52,9 @@ const Header = () => {
           )}
         </div>
         <Row className="space-x-[20px] normal:hidden">
-          <Button>Launch App</Button>
+          <a href="https://devnet.solax.so/swap">
+            <Button>Launch App</Button>
+          </a>
           <div className="flex tablet:hidden">
             <Social />
           </div>
@@ -91,7 +93,9 @@ const Header = () => {
           ))}
         </Col>
         <Col className="items-center space-y-[67px]">
-          <Button>Launch App</Button>
+          <a href="https://devnet.solax.so/swap">
+            <Button>Launch App</Button>
+          </a>
           <Social />
         </Col>
       </div>
