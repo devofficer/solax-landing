@@ -13,7 +13,7 @@ module.exports = {
       macbook: { max: "1440px" },
       desktop: { max: "1280px" },
       laptop: { max: "1024px" },
-      tablet: { max: "834px" },
+      tablet: { max: "830px" },
       normal: { max: "768px" },
       mobile: { max: "480px" },
       last: { max: "374px" }, // for responsive(until 320px)
